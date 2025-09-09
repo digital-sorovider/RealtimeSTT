@@ -6,9 +6,14 @@ services:
     image: rtstt
     container_name: rtstt
     volumes:
-      # - ./RealtimeSTT:/app/RealtimeSTT
-      # - ./example_browserclient:/app/example_browserclient
+      - ./RealtimeSTT:/app/RealtimeSTT
+      - ./example_browserclient:/app/example_browserclient
       - cache:/root/.cache
+    environment:
+      - RTSTT_LANG=ja
+      - RTSTT_RT_MODEL=small
+      - RTSTT_MODEL=large-v3
+      # - RTSTT_MODEL=deepdml/faster-whisper-large-v3-turbo-ct2
     ports:
       - "9001:9001"
 

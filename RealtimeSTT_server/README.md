@@ -65,14 +65,14 @@ You can configure the server using the following command-line arguments:
 #### `-r`, `--rt-model`, `--realtime_model_type`
 
 - **Type**: `str`
-- **Default**: `'tiny.en'`
-- **Description**: Model size for real-time transcription. Options are the same as for `--model`. This is used only if real-time transcription is enabled (`--enable_realtime_transcription`).
+- **Default**: `'tiny'`
+- **Description**: Model size for real-time transcription. Options are the same as for `--model`. Note: use multilingual models (e.g. `tiny`, `base`, `small`, `medium`, `large-*`) for non-English languages. This is used only if real-time transcription is enabled (`--enable_realtime_transcription`).
 
 #### `-l`, `--lang`, `--language`
 
 - **Type**: `str`
-- **Default**: `'en'`
-- **Description**: Language code for the STT model to transcribe in a specific language. Leave this empty for auto-detection based on input audio. Default is `'en'`. [List of supported language codes](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L11-L110).
+- **Default**: `'ja'`
+- **Description**: Language code for the STT model to transcribe in a specific language. Leave this empty for auto-detection based on input audio. Default is `'ja'`. [List of supported language codes](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L11-L110).
 
 #### `-i`, `--input-device`, `--input_device_index`
 

@@ -46,20 +46,23 @@ if __name__ == '__main__':
 
     import os
     MODEL_DEFAULT = os.environ.get('RTSTT_MODEL', 'deepdml/faster-whisper-large-v3-turbo-ct2')
+    RT_MODEL_DEFAULT = os.environ.get('RTSTT_RT_MODEL', 'tiny')  # use multilingual tiny by default
+    USE_MAIN_FOR_RT = os.environ.get('RTSTT_USE_MAIN_RT', 'false').lower() in ('1', 'true', 'yes')
 
     recorder_config = {
         'spinner': False,
         'use_microphone': False,
         'model': MODEL_DEFAULT,
-        'language': 'en',
+    'language': os.environ.get('RTSTT_LANG', 'ja'),
         'silero_sensitivity': 0.4,
         'webrtc_sensitivity': 2,
         'post_speech_silence_duration': 0.7,
         'min_length_of_recording': 0,
         'min_gap_between_recordings': 0,
-        'enable_realtime_transcription': True,
-        'realtime_processing_pause': 0,
-        'realtime_model_type': 'tiny.en',
+    'enable_realtime_transcription': True,
+    'realtime_processing_pause': 0,
+    'realtime_model_type': RT_MODEL_DEFAULT,
+    'use_main_model_for_realtime': USE_MAIN_FOR_RT,
         'on_realtime_transcription_stabilized': text_detected,
     }
 

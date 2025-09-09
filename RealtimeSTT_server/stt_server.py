@@ -18,8 +18,8 @@ stt-server [OPTIONS]
 
 ### Available Parameters:
     - `-m, --model`: Model path or size; default 'deepdml/faster-whisper-large-v3-turbo-ct2'.
-    - `-r, --rt-model, --realtime_model_type`: Real-time model size; default 'tiny.en'.
-    - `-l, --lang, --language`: Language code for transcription; default 'en'.
+    - `-r, --rt-model, --realtime_model_type`: Real-time model size; default 'tiny'.
+    - `-l, --lang, --language`: Language code for transcription; default 'ja'.
     - `-i, --input-device, --input_device_index`: Audio input device index; default 1.
     - `-c, --control, --control_port`: WebSocket control port; default 8011.
     - `-d, --data, --data_port`: WebSocket data port; default 8012.
@@ -405,10 +405,10 @@ def parse_arguments():
                         help='Path to the STT model or model size. Options include: tiny, tiny.en, base, base.en, small, small.en, medium, medium.en, large-v1, large-v2, or any huggingface CTranslate2 STT model such as deepdml/faster-whisper-large-v3-turbo-ct2. Default is deepdml/faster-whisper-large-v3-turbo-ct2.')
 
     parser.add_argument('-r', '--rt-model', '--realtime_model_type', type=str, default='tiny',
-                        help='Model size for real-time transcription. Options same as --model.  This is used only if real-time transcription is enabled (enable_realtime_transcription). Default is tiny.en.')
+                        help='Model size for real-time transcription. Options same as --model. Use multilingual variants (e.g., tiny/base/small/medium/large-*) for non-English languages. This is used only if real-time transcription is enabled (enable_realtime_transcription). Default is tiny.')
     
-    parser.add_argument('-l', '--lang', '--language', type=str, default='en',
-                help='Language code for the STT model to transcribe in a specific language. Leave this empty for auto-detection based on input audio. Default is en. List of supported language codes: https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L11-L110')
+    parser.add_argument('-l', '--lang', '--language', type=str, default='ja',
+                help='Language code for the STT model to transcribe in a specific language. Leave this empty for auto-detection based on input audio. Default is ja. List of supported language codes: https://github.com/openai/whisper/blob/main/whisper/tokenizer.py#L11-L110')
 
     parser.add_argument('-i', '--input-device', '--input-device-index', type=int, default=1,
                     help='Index of the audio input device to use. Use this option to specify a particular microphone or audio input device based on your system. Default is 1.')
