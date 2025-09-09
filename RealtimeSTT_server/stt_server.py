@@ -17,7 +17,7 @@ stt-server [OPTIONS]
 ```
 
 ### Available Parameters:
-    - `-m, --model`: Model path or size; default 'large-v2'.
+    - `-m, --model`: Model path or size; default 'deepdml/faster-whisper-large-v3-turbo-ct2'.
     - `-r, --rt-model, --realtime_model_type`: Real-time model size; default 'tiny.en'.
     - `-l, --lang, --language`: Language code for transcription; default 'en'.
     - `-i, --input-device, --input_device_index`: Audio input device index; default 1.
@@ -401,8 +401,8 @@ def parse_arguments():
     import argparse
     parser = argparse.ArgumentParser(description='Start the Speech-to-Text (STT) server with various configuration options.')
 
-    parser.add_argument('-m', '--model', type=str, default='large-v2',
-                        help='Path to the STT model or model size. Options include: tiny, tiny.en, base, base.en, small, small.en, medium, medium.en, large-v1, large-v2, or any huggingface CTranslate2 STT model such as deepdml/faster-whisper-large-v3-turbo-ct2. Default is large-v2.')
+    parser.add_argument('-m', '--model', type=str, default='deepdml/faster-whisper-large-v3-turbo-ct2',
+                        help='Path to the STT model or model size. Options include: tiny, tiny.en, base, base.en, small, small.en, medium, medium.en, large-v1, large-v2, or any huggingface CTranslate2 STT model such as deepdml/faster-whisper-large-v3-turbo-ct2. Default is deepdml/faster-whisper-large-v3-turbo-ct2.')
 
     parser.add_argument('-r', '--rt-model', '--realtime_model_type', type=str, default='tiny',
                         help='Model size for real-time transcription. Options same as --model.  This is used only if real-time transcription is enabled (enable_realtime_transcription). Default is tiny.en.')

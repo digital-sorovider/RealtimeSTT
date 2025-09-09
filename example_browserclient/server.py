@@ -44,10 +44,13 @@ if __name__ == '__main__':
                 })), main_loop)
         print(f"\r{text}", flush=True, end='')
 
+    import os
+    MODEL_DEFAULT = os.environ.get('RTSTT_MODEL', 'deepdml/faster-whisper-large-v3-turbo-ct2')
+
     recorder_config = {
         'spinner': False,
         'use_microphone': False,
-        'model': 'large-v2',
+        'model': MODEL_DEFAULT,
         'language': 'en',
         'silero_sensitivity': 0.4,
         'webrtc_sensitivity': 2,

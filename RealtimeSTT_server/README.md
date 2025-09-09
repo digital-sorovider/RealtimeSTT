@@ -59,7 +59,7 @@ You can configure the server using the following command-line arguments:
 #### `-m`, `--model`
 
 - **Type**: `str`
-- **Default**: `'large-v2'`
+- **Default**: `'deepdml/faster-whisper-large-v3-turbo-ct2'`
 - **Description**: Path to the Speech-to-Text (STT) model or specify a model size. Options include: `tiny`, `tiny.en`, `base`, `base.en`, `small`, `small.en`, `medium`, `medium.en`, `large-v1`, `large-v2`, or any HuggingFace CTranslate2 STT model such as `deepdml/faster-whisper-large-v3-turbo-ct2`.
 
 #### `-r`, `--rt-model`, `--realtime_model_type`
