@@ -1,4 +1,4 @@
-let socket = new WebSocket("wss://realtimestt.digital-sorovider.jp/ws");
+let socket = new WebSocket("wss://realtimestt.digital-sorovider.jp/ws/");
 let displayDiv = document.getElementById('textDisplay');
 let server_available = false;
 let mic_available = false;
@@ -7,7 +7,7 @@ let fullSentences = [];
 const serverCheckInterval = 5000; // Check every 5 seconds
 
 function connectToServer() {
-    socket = new WebSocket("wss://realtimestt.digital-sorovider.jp/ws");
+    socket = new WebSocket("wss://realtimestt.digital-sorovider.jp/ws/");
 
     socket.onopen = function(event) {
         server_available = true;
@@ -25,7 +25,16 @@ function connectToServer() {
         }
     };
 
+    socket.onerror = function(event) {
+        console.error('WebSocket error (reconnect will be attempted):', event);
+    };
+
     socket.onclose = function(event) {
+        console.warn('WebSocket closed:', {
+            code: event.code,
+            reason: event.reason,
+            wasClean: event.wasClean
+        });
         server_available = false;
     };
 }
@@ -39,6 +48,18 @@ socket.onmessage = function(event) {
         fullSentences.push(data.text);
         displayRealtimeText("", displayDiv); // Refresh display with new full sentence
     }
+};
+
+socket.onerror = function(event) {
+    console.error('WebSocket error:', event);
+};
+
+socket.onclose = function(event) {
+    console.warn('WebSocket closed before ready:', {
+        code: event.code,
+        reason: event.reason,
+        wasClean: event.wasClean
+    });
 };
 
 function displayRealtimeText(realtimeText, displayDiv) {
